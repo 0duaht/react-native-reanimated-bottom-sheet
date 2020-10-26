@@ -115,11 +115,7 @@ type Props = {
   onCloseEnd?: () => void
   callbackThreshold?: number
   borderRadius?: number
-
-  panMasterState?: Animated.Value<number>
-  masterVelocity?: Animated.Value<number>
-  dragMasterY?: Animated.Value<number>
-  handleMasterPan?: any
+  overflow?: 'visible' | 'hidden'
 }
 
 type State = {
@@ -802,7 +798,7 @@ export default class BottomSheetBehavior extends React.Component<Props, State> {
   render() {
     const { borderRadius } = this.props
     return (
-      <React.Fragment>
+      <>
         <Animated.View
           style={{
             height: '100%',
@@ -853,7 +849,7 @@ export default class BottomSheetBehavior extends React.Component<Props, State> {
             style={
               this.props.enabledInnerScrolling && {
                 height: this.state.initSnap - this.state.heightOfHeader,
-                overflow: 'hidden',
+                overflow: this.props.overflow || 'hidden',
                 borderTopLeftRadius: borderRadius,
                 borderTopRightRadius: borderRadius,
               }
@@ -1068,7 +1064,7 @@ export default class BottomSheetBehavior extends React.Component<Props, State> {
             )}
           </View>
         </Animated.View>
-      </React.Fragment>
+      </>
     )
   }
 }
