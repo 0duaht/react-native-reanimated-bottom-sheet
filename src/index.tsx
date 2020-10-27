@@ -116,6 +116,10 @@ type Props = {
   callbackThreshold?: number
   borderRadius?: number
   overflow?: 'visible' | 'hidden'
+  panMasterState?: Animated.Value<number>
+  masterVelocity?: Animated.Value<number>
+  dragMasterY?: Animated.Value<number>
+  handleMasterPan?: () => void
 }
 
 type State = {
